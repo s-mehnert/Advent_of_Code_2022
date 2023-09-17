@@ -13,5 +13,7 @@ with open("1_elves_calories_input.txt") as input:
         else:
             cals_per_elf += int(line.strip("\n"))
 
-print(imported_data)
 
+max_cal_elf = max(imported_data)
+
+print(f"The elf carrying the most calories is carrying {max_cal_elf} calories.")
