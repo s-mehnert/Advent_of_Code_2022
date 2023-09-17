@@ -10,3 +10,9 @@ with open("02_rock_paper_scissors_input.txt") as input:
         imported_data.append(line.strip("\n"))
 
 print(imported_data)
+
+scores = {"X" : 1, "Y" : 2, "Z" : 3, "won" : 6, "draw" : 3, "lost" : 0}
+total_points = 0
+
+
+    
