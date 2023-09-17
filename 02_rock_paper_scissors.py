@@ -87,3 +87,10 @@ def calculate_points_modified(shape, outcome):
         outcome = "won"
     return scores[shape] + scores[outcome]
 
+
+total_points_new_rules = 0
+for round in imported_data:
+    total_points_new_rules += calculate_points_modified(play_round_modified(round), round[2])
+
+    
+print(f"The total score when following the strategy guide according to the new rules would be {total_points_new_rules} points.")
