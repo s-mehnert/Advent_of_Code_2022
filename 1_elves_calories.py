@@ -20,3 +20,8 @@ max_cal_elf = max(imported_data)
 print(f"The elf carrying the most calories is carrying {max_cal_elf} calories.")
 
 
+#****************** Part 2 *****
+
+max_cal_top_three_elves = sum(sorted(imported_data, reverse=True)[:3])
+
+print(f"The top three elves carry {max_cal_top_three_elves} calories in total.")
