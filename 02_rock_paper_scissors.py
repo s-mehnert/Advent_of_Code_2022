@@ -48,3 +48,33 @@ for round in imported_data:
 
     
 print(f"The total score when following the strategy guide would be {total_points} points.")
+
+
+#****************** Part 2 *****
+
+def play_round_modified(input):
+    outcome = input[2]
+    shape = ""
+    if input[0] == "A":
+        if outcome == "X":
+            shape = "Z"
+        elif outcome == "Y":
+            shape = "X"
+        elif outcome == "Z":
+            shape = "Y"
+    elif input[0] == "B":
+        if outcome == "X":
+            shape = "X"
+        elif outcome == "Y":
+            shape = "Y"
+        elif outcome == "Z":
+            shape = "Z"
+    elif input[0] == "C":
+        if outcome == "X":
+            shape = "Y"
+        elif outcome == "Y":
+            shape = "Z"
+        elif outcome == "Z":
+            shape = "X"
+    return shape
+
