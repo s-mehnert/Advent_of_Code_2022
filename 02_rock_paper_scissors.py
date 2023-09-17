@@ -14,5 +14,31 @@ print(imported_data)
 scores = {"X" : 1, "Y" : 2, "Z" : 3, "won" : 6, "draw" : 3, "lost" : 0}
 total_points = 0
 
+def play_round(input):
+    outcome = ""
+    shape = input[2]
+    if input[0] == "A":
+        if shape == "X":
+            outcome = "draw"
+        elif shape == "Y":
+            outcome = "won"
+        elif shape == "Z":
+            outcome = "lost"
+    elif input[0] == "B":
+        if shape == "X":
+            outcome = "lost"
+        elif shape == "Y":
+            outcome = "draw"
+        elif shape == "Z":
+            outcome = "won"
+    elif input[0] == "C":
+        if shape == "X":
+            outcome = "won"
+        elif shape == "Y":
+            outcome = "lost"
+        elif shape == "Z":
+            outcome = "draw"
+    return outcome
+
 
     
