@@ -40,5 +40,10 @@ def play_round(input):
             outcome = "draw"
     return outcome
 
+def calculate_points(shape, outcome):
+    return scores[shape] + scores[outcome]
+
+
+
 
     
