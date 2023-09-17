@@ -9,10 +9,8 @@ with open("02_rock_paper_scissors_input.txt") as input:
     for line in input.readlines():
         imported_data.append(line.strip("\n"))
 
-print(imported_data)
 
 scores = {"X" : 1, "Y" : 2, "Z" : 3, "won" : 6, "draw" : 3, "lost" : 0}
-total_points = 0
 
 def play_round(input):
     outcome = ""
@@ -44,6 +42,9 @@ def calculate_points(shape, outcome):
     return scores[shape] + scores[outcome]
 
 
-
+total_points = 0
+for round in imported_data:
+    total_points += calculate_points(round[2], play_round(round))
 
     
+print(f"The total score when following the strategy guide would be {total_points} points.")
