@@ -78,3 +78,12 @@ def play_round_modified(input):
             shape = "X"
     return shape
 
+def calculate_points_modified(shape, outcome):
+    if outcome == "X":
+        outcome = "lost"
+    elif outcome == "Y":
+        outcome = "draw"
+    elif outcome == "Z":
+        outcome = "won"
+    return scores[shape] + scores[outcome]
+
