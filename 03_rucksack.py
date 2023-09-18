@@ -32,5 +32,10 @@ def find_badge(rucksack_group):
         if char in rucksack_group[1] and char in rucksack_group[2]:
             return char
 
+def split_list_in_groups(elves):
+    return [elves[i:i+3] for i in range(0, len(elves), 3)]
+
+group_list = split_list_in_groups(imported_data)
+print(group_list)
 
 
