@@ -1,3 +1,7 @@
+#***** ADVENT OF CODE 2022 *****
+#************ DAY 3 ************
+#****************** Part 1 *****
+
 imported_data = list()
 
 with open("03_rucksack_input.txt") as input:
@@ -19,3 +23,14 @@ for rucksack in imported_data:
     faulty_characters.append(find_faulty_item(rucksack))
 
 print(f"The priorities of the faulty items in all rucksacks together is {sum([letters.index(char) for char in faulty_characters])}.")
+
+
+#****************** Part 2 *****
+
+def find_badge(rucksack_group):
+    for char in rucksack_group[0]:
+        if char in rucksack_group[1] and char in rucksack_group[2]:
+            return char
+
+
+
