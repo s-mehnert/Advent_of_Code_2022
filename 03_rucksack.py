@@ -35,7 +35,9 @@ def find_badge(rucksack_group):
 def split_list_in_groups(elves):
     return [elves[i:i+3] for i in range(0, len(elves), 3)]
 
-group_list = split_list_in_groups(imported_data)
-print(group_list)
+badges = list()
 
+for group in split_list_in_groups(imported_data):
+    badges.append(find_badge(group))
 
+print(f"The priorities of the badges all together is {sum([letters.index(badge) for badge in badges])}.")
