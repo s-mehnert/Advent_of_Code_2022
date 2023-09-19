@@ -33,7 +33,7 @@ for row in instructions:
 def build_stacks(rows_bottom_up):
     stack_list = list()
     for i in range(len(rows_bottom_up[0])):
-        stack_list.append(deque())
+        stack_list.append(list())
     for row in rows_bottom_up:
         for i in range(len(row)):
             if row[i] == " ":
@@ -66,3 +66,26 @@ print(f"The message is {decipher_message(stacks_after_rearrangement)}.")
 
 
 #****************** Part 2 *****
+
+def move_in_bulk(stack_list, instruction):
+    
+    quantity = instruction[0]
+    from_stack = instruction[1]-1
+    to_stack = instruction[2]-1
+
+    if quantity == 0:
+        move_item(stack_list, from_stack, to_stack)
+    else:    
+        stack_list[to_stack] += stack_list[from_stack][-quantity:]
+        del stack_list[from_stack][-quantity:]
+
+    return stack_list
+
+initial_stacks = build_stacks(stack_rows)
+stacks_after_rearrangement_2 = list()
+for instruction in formatted_instructions:
+    stacks_after_rearrangement_2 = move_in_bulk(initial_stacks, instruction)
+
+
+
+print(f"When rearranging the crates with crane 9001 the message is {decipher_message(stacks_after_rearrangement_2)}.")
