@@ -26,10 +26,12 @@ def build_stacks(rows_bottom_up):
         stack_list.append(deque())
     for row in rows_bottom_up:
         for i in range(len(row)):
+            if row[i] == " ":
+                continue
             stack_list[i].append(row[i])
     return stack_list
 
-print(build_stacks(stack_rows))
+initial_stacks = build_stacks(stack_rows)
 
 formatted_instructions = list()
 
@@ -39,8 +41,15 @@ for row in instructions:
 
 print(formatted_instructions)
 
-def process_instructions(stacks, instructions):
+def move_item(stack_list, from_stack, to_stack):
+    stack_list[to_stack-1].append(stack_list[from_stack-1].pop())
+    return stack_list
+print(initial_stacks)
+print(move_item(initial_stacks, 1, 2))
+
+def process_instructions(stacks, instruction):
     pass
+
 
 
 
