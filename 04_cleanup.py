@@ -26,4 +26,19 @@ def find_complete_overlaps(elf_pairs):
 section_assignment = format_section_list(imported_data) 
 
 print(f"There are {find_complete_overlaps(section_assignment)} elf pairs that have a complete overlap of sections.")
-            
+
+
+#****************** Part 2 *****
+
+def find_any_overlap(elf_pairs):
+    overlap_count = 0
+    for pair in elf_pairs:
+        elf_1_sections = [i for i in range(pair[0][0], pair[0][1]+1)]
+        elf_2_sections = [i for i in range(pair[1][0], pair[1][1]+1)]
+        for section in elf_1_sections:
+            if section in elf_2_sections:
+                overlap_count += 1
+                break
+    return overlap_count
+
+print(f"There are {find_any_overlap(section_assignment)} elf pairs that have at least a partial overlap of sections.")
