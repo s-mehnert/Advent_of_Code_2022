@@ -12,7 +12,7 @@ with open("05_supply_input.txt") as input:
 
 
 stacks_raw_data = imported_data[0].split("\n")
-instructions = imported_data[1]
+instructions = imported_data[1].split("\n")
 
 stack_rows = list()
 for row in stacks_raw_data:
@@ -31,11 +31,16 @@ def build_stacks(rows_bottom_up):
 
 print(build_stacks(stack_rows))
 
+formatted_instructions = list()
 
-print(stack_rows)
-print(instructions)
+for row in instructions:
+    instr = row.split()
+    formatted_instructions.append([int(instr[1]), int(instr[3]), int(instr[5])])
 
+print(formatted_instructions)
 
+def process_instructions(stacks, instructions):
+    pass
 
 
 
