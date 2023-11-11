@@ -13,8 +13,8 @@ with open("07_file_system_input.txt") as input:
 
 
 directories = dict()
-files = dict()
-visited = list()
+directory_sizes = dict()
+path = list()
 current_dir = ""
 
 
@@ -24,23 +24,34 @@ for line in imported_data:
         if command == "cd":
             dir = line[5:]
             if dir == "..":
-                visited.pop()
-                current_dir = visited[-1]
+                path.pop()
+                current_dir = path[-1]
                 print("...moving up...")
             else:
-                visited.append(dir)
+                path.append(dir)
                 current_dir = dir
                 if dir not in directories:
-                    directories[dir] = list()
+                    directories[dir] = [[], 0]
             print("current directory:", current_dir)
         elif command == "ls":
             continue
     elif line.startswith("dir"):
         child_dir = line[4:]
-        if child_dir not in directories[current_dir]:
-            directories[current_dir].append(child_dir)
-            
+        if child_dir not in directories[current_dir][0]:
+            directories[current_dir][0].append(child_dir)
+    else:
+        file_data = line.split()
+        for dir in path:
+            if dir not in directory_sizes:
+                directory_sizes[dir] = int(file_data[0])
+            else:
+                directory_sizes[dir] += int(file_data[0])
 
-print(directories)
+print(directory_sizes)
 
-    
+total = 0
+for key, value in directory_sizes.items():
+    if value <= 100000:
+        total += value
+
+print(total)
