@@ -14,6 +14,7 @@ with open("07_file_system_input.txt") as input:
 
 directories = dict()
 directory_sizes = dict()
+files_seen = list()
 path = list()
 current_dir = ""
 
@@ -41,11 +42,13 @@ for line in imported_data:
             directories[current_dir][0].append(child_dir)
     else:
         file_data = line.split()
-        for dir in path:
-            if dir not in directory_sizes:
-                directory_sizes[dir] = int(file_data[0])
-            else:
-                directory_sizes[dir] += int(file_data[0])
+        if file_data[1] not in files_seen:
+            files_seen.append(file_data[1])
+            for dir in path:
+                if dir not in directory_sizes:
+                    directory_sizes[dir] = int(file_data[0])
+                else:
+                    directory_sizes[dir] += int(file_data[0])
 
 print(directory_sizes)
 
