@@ -17,9 +17,9 @@ files = dict()
 visited = list()
 current_dir = ""
 
+
 for line in imported_data:
     if line.startswith("$"):
-        next = "command"
         command = line[2:4]
         if command == "cd":
             dir = line[5:]
@@ -33,6 +33,13 @@ for line in imported_data:
                 if dir not in directories:
                     directories[dir] = list()
             print("current directory:", current_dir)
+        elif command == "ls":
+            continue
+    elif line.startswith("dir"):
+        child_dir = line[4:]
+        if child_dir not in directories[current_dir]:
+            directories[current_dir].append(child_dir)
+            
 
 print(directories)
 
